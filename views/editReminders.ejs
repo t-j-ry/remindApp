@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/reminders">Reminder List</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="/reminders/allReminders">Reminder List</a>
+      <a class="nav-item nav-link" href="/reminders/createReminders">Create</a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <h1 class="page-header">Edit</h1>
+    <form action=<%= "/reminders/update/" + reminderItem.id %> method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" class="form-control" id="titleInput" value="<%= reminderItem.title %>">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Description" name="description"><%= reminderItem.description %></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="completed">Completed</label>
+        <div class="radio">
+          <label>
+            <% if (reminderItem.completed == true) { %>
+              <input type="radio" name="completed" id="true" value="true" checked="checked">
+            <% } else { %>
+              <input type="radio" name="completed" id="true" value="true">
+            <% } %>
+            True
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <% if (reminderItem.completed == false) { %>
+              <input type="radio" name="completed" id="false" value="false" checked="checked">
+            <% } else { %>
+              <input type="radio" name="completed" id="false" value="false">
+            <% } %>
+            False
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  
